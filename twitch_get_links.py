@@ -32,11 +32,14 @@ if args.userid is not None:
     total_got = 0
     last_req_length = 1
     if args.get_all_videos:
-        while last_req_length < 1:
+        print("Getting ALL videos...")
+        while last_req_length > 0:
+            #print("\nGetting 100 more (if possible)...")
             videos = client.channels.get_videos(channel_id=args.userid, limit=100, offset=total_got, broadcast_type=args.broadcast_type, sort=args.sort)
             total_got += len(videos)
             last_req_length = len(videos)
             all_videos += videos
+            print("\tTotal fetched: "+str(len(all_videos)))
         with open(args.output_file_name, "w") as text_file:
             for video in all_videos:
                 text_file.write(video.url + "\n")
