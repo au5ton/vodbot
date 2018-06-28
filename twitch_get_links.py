@@ -37,11 +37,13 @@ if args.userid is not None:
             total_got += len(videos)
             last_req_length = len(videos)
             all_videos += videos
-        for video in all_videos:
-            with open(args.output_file_name, "w") as text_file:
+        with open(args.output_file_name, "w") as text_file:
+            for video in all_videos:
                 text_file.write(video.url + "\n")
     else:
-        videos = client.channels.get_videos(channel_id=args.userid, limit=int(args.limit), offset=args.offset+total_got, broadcast_type=args.broadcast_type, sort=args.sort)
-    
+        videos = client.channels.get_videos(channel_id=args.userid, limit=int(args.limit), offset=args.offset, broadcast_type=args.broadcast_type, sort=args.sort)
+        with open(args.output_file_name, "w") as text_file:
+            for video in videos:
+                text_file.write(video.url + "\n")
         
     # 137512364
