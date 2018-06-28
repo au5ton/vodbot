@@ -1,2 +1,3 @@
 selenium==3.12.0
 python-dotenv==0.8.2
+python-twitch-client==0.5.1
