@@ -15,7 +15,7 @@ parser.add_argument("-f", action="store", dest="file_name", help="Process a file
 args = parser.parse_args()
 
 # twitch stuff
-client = TwitchClient(os.environ["TWITCH_CLIENT_ID"])
+client = TwitchClient(client_id=os.environ["TWITCH_CLIENT_ID"], oauth_token=os.environ["TWITCH_OAUTH_TOKEN"])
 vid_ids = []
 real_links = []
 
@@ -50,6 +50,7 @@ else:
             video = client.videos.get_by_id(n) # fetch video via HTTP
             print("\t"+video["title"]+" ("+str(video["length"])+"s)")
             vid_lengths.append(video["length"])
+        print("Total clip length: " + str(sum(vid_lengths)) + " seconds")
         print("Starting Chrome")
         driver = webdriver.Chrome(executable_path=os.environ["CHROMEDRIVER_LOCATION"], chrome_options=options)
         # for every clip (real_links, vid_ids, and vid_lengths should be same length)
