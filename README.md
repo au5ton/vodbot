@@ -1,5 +1,5 @@
 # vodbot
-:tv: twitch vod bot
+:tv: Automatically watches a provided list of Twitch vods, originally intended for OWL
 
 ## Dependencies
 - Python 3 + pip
