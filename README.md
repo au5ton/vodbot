@@ -12,5 +12,8 @@
 - Rename `.env.example` to `.env` and fill out each variable with the correct information
 - Run: `python vodbot.py --help`
 
-
+## Ripping Overwatch League VOD data to CSV
+```bash
+python3 twitch_get_links.py -n overwatchleague -t highlight -s time -O owl.csv -csv
+```
 
